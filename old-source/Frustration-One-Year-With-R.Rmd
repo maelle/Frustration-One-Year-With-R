@@ -891,16 +891,18 @@ Let's talk about matrices. I've already discussed some oddities like how functio
   ```
   Not only are the function names inconsistent (why not `colNames()`?), the syntax is wildly so. Also, take a look at the incomprehensible error message that `colnames()` gives if you use `diag(3)` directly rather than assigning it to a variable beforehand.
   ```{r, echo = TRUE}
-  a <- diag(3)
-  colnames(a) <- c("Not", "A", "Problem")
- ## > colnames(diag(3)) <- c("Big", "Bad", "Bug")
- ## Error in colnames(diag(3)) <- c("Big", "Bad", "Bug") : 
- ##  target of assignment expands to non-language object
- ## > colnames(a <- diag(3)) <- c("Has", "Similar", "Problem")
- ## Error in colnames(a <- diag(3)) <- c("Has", "Similar", "Problem") : 
- ##  object 'a' not found
+    a <- diag(3)
+    colnames(a) <- c("Not", "A", "Problem")
+    ## > colnames(diag(3)) <- c("Big", "Bad", "Bug")
+    ## Error in colnames(diag(3)) <- c("Big", "Bad", "Bug") : 
+    ##  target of assignment expands to non-language object
+    ## > colnames(a <- diag(3)) <- c("Has", "Similar", "Problem")
+    ## Error in colnames(a <- diag(3)) <- c("Has", "Similar", "Problem") : 
+    ##  object 'a' not found
   ```
+  
   `setNames()` has no such issue.
+  
   ```{r, echo = TRUE}
   setNames(diag(3), c("Works", "Just", "Fine"))
   setNames(a <- diag(3), c("Works", "Just", "Fine"))
