@@ -152,13 +152,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link active" data-scroll-target="#sec-introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#length" id="toc-length" class="nav-link" data-scroll-target="#length"><span class="header-section-number">1.1</span> Length</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience"><span class="header-section-number">1.2</span> Experience</a></li>
-  <li><a href="#ignorance" id="toc-ignorance" class="nav-link" data-scroll-target="#ignorance"><span class="header-section-number">1.3</span> Ignorance</a></li>
-  <li><a href="#assumed-knowledge" id="toc-assumed-knowledge" class="nav-link" data-scroll-target="#assumed-knowledge"><span class="header-section-number">1.4</span> Assumed Knowledge</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer"><span class="header-section-number">1.5</span> Disclaimer</a></li>
+  <li><a href="#sec-length" id="toc-sec-length" class="nav-link" data-scroll-target="#sec-length"><span class="header-section-number">1.1</span> Length</a></li>
+  <li><a href="#sec-experience" id="toc-sec-experience" class="nav-link" data-scroll-target="#sec-experience"><span class="header-section-number">1.2</span> Experience</a></li>
+  <li><a href="#sec-ignorance" id="toc-sec-ignorance" class="nav-link" data-scroll-target="#sec-ignorance"><span class="header-section-number">1.3</span> Ignorance</a></li>
+  <li><a href="#sec-assumed-knowledge" id="toc-sec-assumed-knowledge" class="nav-link" data-scroll-target="#sec-assumed-knowledge"><span class="header-section-number">1.4</span> Assumed Knowledge</a></li>
+  <li><a href="#sec-disclaimer" id="toc-sec-disclaimer" class="nav-link" data-scroll-target="#sec-disclaimer"><span class="header-section-number">1.5</span> Disclaimer</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -194,17 +194,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level1" data-number="1">
+<section id="sec-introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>What follows is an account of my experiences from about one year of roughly daily R usage. It began as a list of things that I liked and disliked about the language, but grew to be something huge. Once the list exceeded ten thousand words, I knew that it must be published. By the time it was ready, it had nearly tripled in length. It took five months of weekends just to get it all in R Markdown.</p>
 <p>This isn’t an attack on R or a pitch for anything else. It is only an account of what I’ve found to be right and wrong with the language. Although the length of my list of what is wrong far exceeds that of what is right, that may be my failing rather than R’s. I suspect that my list of what R does right will grow as I learn other languages and begin to miss some of R’s benefits. I welcome any attempts to correct this or any other errors that you find. Some major errors will have slipped in somewhere or other.</p>
-<section id="length" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="length"><span class="header-section-number">1.1</span> Length</h2>
-<p>To start, I must issue a warning: This document is <strong>huge</strong>. I have tried to keep everything contained in small sections, such that the reader has plenty of points where they can pause and return to the document later, but the word count is still far higher than I’m happy with. I have tried to not be too petty, but every negative point in here comes from an honest position of frustration. There are some things that I really love about R. I’ve even devoted <a href="#what-r-does-right">an entire section to them</a>. However, if there is one point that I really want this document to get across, it’s that R is filled to the brim with small madnesses. Although I can name a few major issues with R, its ultimate problem is the sum of its little problems. This document couldn’t be short.</p>
+<section id="sec-length" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-length"><span class="header-section-number">1.1</span> Length</h2>
+<p>To start, I must issue a warning: This document is <strong>huge</strong>. I have tried to keep everything contained in small sections, such that the reader has plenty of points where they can pause and return to the document later, but the word count is still far higher than I’m happy with. I have tried to not be too petty, but every negative point in here comes from an honest position of frustration. There are some things that I really love about R. I’ve even devoted <a href="what_r_does_right.html">an entire section to them</a>. However, if there is one point that I really want this document to get across, it’s that R is filled to the brim with small madnesses. Although I can name a few major issues with R, its ultimate problem is the sum of its little problems. This document couldn’t be short.</p>
 <p>Also, on the topic of the sections in this document, watch out for all of the internal links. Nothing in R Markdown makes them look distinct from external ones, so you might lose your place if you don’t take care to open all of your links in a new tab/window.</p>
 </section>
-<section id="experience" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="experience"><span class="header-section-number">1.2</span> Experience</h2>
+<section id="sec-experience" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-experience"><span class="header-section-number">1.2</span> Experience</h2>
 <p>Before I say anything nasty about R, a show of good faith is in order. In my year with R, I have done the following:</p>
 <ul>
 <li>Added almost 100 <a href="https://github.com/ReeceGoding/Rosetta-Code-Submissions">R solutions</a> to <a href="https://rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a>.</li>
@@ -224,8 +224,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>At minimum, I can say with confidence that unless I happen to pick up an R-focused statistics textbook – <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html#What-documentation-exists-for-R_003f">the <em>R FAQ</em> has some tempting items</a> – I’ve already done all of the R-related reading that I ever plan to do. All that is left for me is to use the language more and more. I hope that this section shows that I’ve given it a good chance before writing this review of it.</p>
 </section>
-<section id="ignorance" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="ignorance"><span class="header-section-number">1.3</span> Ignorance</h2>
+<section id="sec-ignorance" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-ignorance"><span class="header-section-number">1.3</span> Ignorance</h2>
 <p>I am not an R expert. I freely admit that I am lacking in the following regards:</p>
 <ul>
 <li>You can never have done enough statistics with R. I’ve mostly used R as a programming language rather than a statistics tool. My arguments would certainly be stronger if I had some published stats work to back them up, even just blogs. I might correct this at some point.</li>
@@ -241,12 +241,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The above list is unlikely to be exhaustive. I’m not against reading another book about R as a programming language, but <a href="https://adv-r.hadley.nz/"><em>Advanced R</em></a> seems to be the only one that anyone ever mentions. For the foreseeable future, the main thing that I plan to do to improve my evaluation of R is to learn Python. I’ll probably read a book on it.</p>
 </section>
-<section id="assumed-knowledge" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="assumed-knowledge"><span class="header-section-number">1.4</span> Assumed Knowledge</h2>
+<section id="sec-assumed-knowledge" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-assumed-knowledge"><span class="header-section-number">1.4</span> Assumed Knowledge</h2>
 <p>You’d be a fool to read this without some experience of R. I don’t think that I’ve written anything that requires an expert level of understanding, but you’re unlikely to get much out of this document without at least a basic idea of R. I’ve also mentioned the Tidyverse a few times without giving it much introduction, particularly its <code>tibble</code> package. If you care enough about R to consider reading this document, then you really ought to be familiar with the most popular parts of the Tidyverse. It’s rare for any discussion of R to go long without some mention of <code>purrr</code>, <code>dplyr</code> or <code>magrittr</code>.</p>
 </section>
-<section id="disclaimer" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="disclaimer"><span class="header-section-number">1.5</span> Disclaimer</h2>
+<section id="sec-disclaimer" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sec-disclaimer"><span class="header-section-number">1.5</span> Disclaimer</h2>
 <p>This document started out as personal notes that I had no intention of publishing. There’s a good chance that I might have copy and pasted someone’s example from somewhere and totally forgot that it wasn’t my own. If you spot any plagiarism, let me know.</p>
 
 

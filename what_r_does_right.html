@@ -186,18 +186,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mathematics-and-statistics" id="toc-mathematics-and-statistics" class="nav-link active" data-scroll-target="#mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</a></li>
-  <li><a href="#names-and-data-frames" id="toc-names-and-data-frames" class="nav-link" data-scroll-target="#names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</a></li>
-  <li><a href="#outstanding-packages" id="toc-outstanding-packages" class="nav-link" data-scroll-target="#outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</a></li>
-  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">3.4</span> Vectorization</a></li>
-  <li><a href="#functional-programming" id="toc-functional-programming" class="nav-link" data-scroll-target="#functional-programming"><span class="header-section-number">3.5</span> Functional Programming</a>
+  <li><a href="#sec-mathematics-and-statistics" id="toc-sec-mathematics-and-statistics" class="nav-link active" data-scroll-target="#sec-mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</a></li>
+  <li><a href="#sec-names-and-data-frames" id="toc-sec-names-and-data-frames" class="nav-link" data-scroll-target="#sec-names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</a></li>
+  <li><a href="#sec-outstanding-packages" id="toc-sec-outstanding-packages" class="nav-link" data-scroll-target="#sec-outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</a></li>
+  <li><a href="#sec-vectorization" id="toc-sec-vectorization" class="nav-link" data-scroll-target="#sec-vectorization"><span class="header-section-number">3.4</span> Vectorization</a></li>
+  <li><a href="#sec-functional-programming" id="toc-sec-functional-programming" class="nav-link" data-scroll-target="#sec-functional-programming"><span class="header-section-number">3.5</span> Functional Programming</a>
   <ul class="collapse">
-  <li><a href="#first-class-functions" id="toc-first-class-functions" class="nav-link" data-scroll-target="#first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</a></li>
-  <li><a href="#first-class-environments" id="toc-first-class-environments" class="nav-link" data-scroll-target="#first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</a></li>
-  <li><a href="#generic-functions" id="toc-generic-functions" class="nav-link" data-scroll-target="#generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</a></li>
+  <li><a href="#sec-first-class-functions" id="toc-sec-first-class-functions" class="nav-link" data-scroll-target="#sec-first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</a></li>
+  <li><a href="#sec-first-class-environments" id="toc-sec-first-class-environments" class="nav-link" data-scroll-target="#sec-first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</a></li>
+  <li><a href="#sec-generic-functions" id="toc-sec-generic-functions" class="nav-link" data-scroll-target="#sec-generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</a></li>
   </ul></li>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax"><span class="header-section-number">3.6</span> Syntax</a></li>
-  <li><a href="#miscellaneous-positives" id="toc-miscellaneous-positives" class="nav-link" data-scroll-target="#miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</a></li>
+  <li><a href="#sec-syntax" id="toc-sec-syntax" class="nav-link" data-scroll-target="#sec-syntax"><span class="header-section-number">3.6</span> Syntax</a></li>
+  <li><a href="#sec-miscellaneous-positives" id="toc-sec-miscellaneous-positives" class="nav-link" data-scroll-target="#sec-miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What R Does Right</span></h1>
+<h1 class="title"><span id="sec-what-r-does-right" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What R Does Right</span></span></h1>
 </div>
 
 
@@ -222,8 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>As a final show of good faith, here is what I think R does right. In summary, along with having some great functional programming toys, R has some domain-specific tools that can work excellently when they’re in their element. Whatever the faults of R, it’s always going to be my first choice for some problems.</p>
-<section id="mathematics-and-statistics" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</h2>
+<section id="sec-mathematics-and-statistics" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</h2>
 <p>R wants to be a mathematics and statistics tool. Many of its fundamental design choices support this. For example, vectors are primitive types and R isn’t at all shy about giving you a table or matrix as output. Similarly, the base libraries are packed with maths and stats functions that are usually a good combination of relevant, generic, and helpful. Some examples:</p>
 <ul>
 <li><p>Lots of stats is made easy. Commands like <code>boxplot(data)</code> or <code>quantile(data)</code> just work and there are lots of handy functions like <code>colSums()</code>, <code>table()</code>, <code>cor()</code>, or <code>summary()</code>.</p></li>
@@ -265,7 +265,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 </div>
 <p>shows us plenty of useful information and works just as well even if we change to another type of model. Your mileage may vary with packages, but it usually works as expected. Other examples are easy to come by, e.g.&nbsp;<code>plot(model)</code>.</p></li>
 <li><p>The rules for subsetting data, although requiring mastery, are extremely expressive. Coupled with sub-assignment tricks like <code>result[result &lt; 0.5] &lt;- 0</code>, which often do exactly what you think they will, you can really save yourself a lot of work. Being able to demand precisely what parts of your data that you want to see or change is a really great feature.</p></li>
-<li><p>The factor and ordered data types are definitely the sort of tools that I want to have in a stats language. <a href="what_r_does_wrong.html#factor-variables">They’re a bit unpredictable</a>, but they’re great when they work.</p></li>
+<li><p>The factor and ordered data types are definitely the sort of tools that I want to have in a stats language. <a href="what_r_does_wrong.html#sec-factor-variables">They’re a bit unpredictable</a>, but they’re great when they work.</p></li>
 <li><p>It’s no surprise that an R terminal has fully replaced my OS’s built-in calculator. It’s my first choice for any arithmetical task. When checking a gaming problem, I once opened R and used <code>(0.2 * seq(1000, 1300, 50) + 999) / seq(1000, 1300, 50)</code>. That would’ve been several lines in many other languages. Furthermore, a general-purpose language that was capable of the same would’ve had a call to something long-winded like <code>math.vec.seq()</code> rather than just <code>seq()</code>. I find the cumulative functions, e.g.&nbsp;<code>cumsum()</code> and <code>cummax()</code>, similarly enjoyable.</p></li>
 <li><p>How many other language have matrix algebra fully built-in? Solving systems of linear equations is just <code>solve()</code>.</p></li>
 <li><p>The <code>rep()</code> function is outstandingly versatile. I’d give examples, but those found in its documentation are more than sufficient. Open up R and run <code>example(rep)</code> if you want to see them. If tricks like <code>cbind(rep(1:6, each = 6), rep(1:6, times = 6))</code> have yet to become second nature, then you’re really missing out.</p></li>
@@ -277,9 +277,9 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 </div></li>
 </ul>
 </section>
-<section id="names-and-data-frames" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</h2>
-<p>These seem like trivial features, but the language’s deep integration of them is extremely beneficial for manipulating and presenting your data. They assist subsetting, variable creation, plotting, printing, and even <a href="#first-class-environments">metaprogramming</a>.</p>
+<section id="sec-names-and-data-frames" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</h2>
+<p>These seem like trivial features, but the language’s deep integration of them is extremely beneficial for manipulating and presenting your data. They assist subsetting, variable creation, plotting, printing, and even <a href="#sec-first-class-environments">metaprogramming</a>.</p>
 <ul>
 <li><p>The ability to name the components of vectors, e.g.&nbsp;<code>c(Fizz=3, Buzz=5)</code>, is a nice trick for toy programs. The same syntax is used to much greater effect with lists, data frames, and S4 objects. However, it’s good to show how far you can get with even the most basic case. Here’s my submission for a <a href="https://rosettacode.org/wiki/General_FizzBuzz">General FizzBuzz</a> task:</p>
 <div class="cell">
@@ -319,19 +319,19 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 </ul>
 <p>(stolen from my submission <a href="https://rosettacode.org/wiki/Exponentiation_with_infix_operators_in_(or_operating_on)_the_base">here</a>). Did you notice that the output knew the names of <code>x</code> and <code>p</code> without being told them? Did you also notice that a similar thing happened in after our call to <code>curve()</code> earlier on? Finally, did you notice how easy it was to get such neat output?</p>
 </section>
-<section id="outstanding-packages" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</h2>
-<p><a href="index.html#ignorance">I’ve already admitted a great deal of ignorance of this topic</a>, but there are some parts of R’s ecosystem that I’m happy to call outstanding. The below are all things that I’m sure to miss in other languages.</p>
+<section id="sec-outstanding-packages" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</h2>
+<p><a href="index.html#sec-ignorance">I’ve already admitted a great deal of ignorance of this topic</a>, but there are some parts of R’s ecosystem that I’m happy to call outstanding. The below are all things that I’m sure to miss in other languages.</p>
 <ul>
 <li><code>corrplot</code>: It has less than ten functions, but it only needed one to blow my mind. Once you’ve even as much as read <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html">the introduction</a>, you will never try to read a correlation matrix again.</li>
 <li><code>ggplot2</code>: I’m not experienced enough to know what faults it has, but it’s fun to use. That single fact makes it blow any other graphing software that I’ve used out of the water: <strong>It’s fun</strong>.</li>
-<li><code>magrittr</code>: It sold me on pipes. I’d say that any package that makes you consider changing your programming style is automatically outstanding. However, the real reason why I love it is because whenever I’ve run <code>bigLongExpression()</code> in my console and decided that I really wanted <code>foo()</code> of it, it’s so much easier to press the up arrow and type CTRL+SHIFT+M+“foo” than it is to do anything that results in <code>foo(bigLongExpression())</code> appearing. Maybe there’s a keyboard shortcut that I never learned, but this isn’t the only reason why I love <code>magrittr</code>. <a href="the_tidyverse.html#magrittr">I’ll say more about it much later</a>.</li>
+<li><code>magrittr</code>: It sold me on pipes. I’d say that any package that makes you consider changing your programming style is automatically outstanding. However, the real reason why I love it is because whenever I’ve run <code>bigLongExpression()</code> in my console and decided that I really wanted <code>foo()</code> of it, it’s so much easier to press the up arrow and type CTRL+SHIFT+M+“foo” than it is to do anything that results in <code>foo(bigLongExpression())</code> appearing. Maybe there’s a keyboard shortcut that I never learned, but this isn’t the only reason why I love <code>magrittr</code>. <a href="the_tidyverse.html#sec-magrittr">I’ll say more about it much later</a>.</li>
 <li><code>R Markdown</code> has served me well in writing this document. It’s buggier than I’d like, rarely has helpful error messages, and does things that I can’t explain or fix even after setting a bounty on Stack Overflow, but it’s still a great way to make a document from R. It’s the closest thing that I know of to an R user’s LaTeX. I had to wait on <a href="https://github.com/rstudio/rmarkdown/pull/2093">this bug fix</a> before I could start numbering my sections. Hopefully it didn’t break anything.</li>
 </ul>
 </section>
-<section id="vectorization" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="vectorization"><span class="header-section-number">3.4</span> Vectorization</h2>
-<p><a href="what_r_does_wrong.html#vectorization-again">When it’s not causing you problems</a>, the vectorization can be the best thing about the language:</p>
+<section id="sec-vectorization" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-vectorization"><span class="header-section-number">3.4</span> Vectorization</h2>
+<p><a href="what_r_does_wrong.html#sec-vectorization-again">When it’s not causing you problems</a>, the vectorization can be the best thing about the language:</p>
 <ul>
 <li><p>The vector recycling rules are powerful when mastered. Expressions like <code>c("x", "y")[rep(c(1, 2), times = 4)]</code> let you do a lot with only a little work. My favourite ever FizzBuzz could well be</p>
 <div class="cell">
@@ -347,11 +347,11 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <li>Vectorization of functions is sometimes very useful, particularly when it lets you do what should’ve been two loops worth of work in one line. You’d be amazed by how often you can get away with calling <code>foo(1:100)</code> without needing to vectorize <code>foo()</code> yourself.</li>
 </ul>
 </section>
-<section id="functional-programming" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="functional-programming"><span class="header-section-number">3.5</span> Functional Programming</h2>
+<section id="sec-functional-programming" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-functional-programming"><span class="header-section-number">3.5</span> Functional Programming</h2>
 <p>R’s done a good job of harnessing the power of functional languages while maintaining a C-like syntax. It makes no secret of being inspired by Scheme and has reaped many of its benefits.</p>
-<section id="first-class-functions" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</h3>
+<section id="sec-first-class-functions" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</h3>
 <p>It’s impossible to not notice that functions are first-class in R. You’re almost forced to learn functional programming idioms like mapping functions, higher-order functions, and anonymous functions. This is a good thing. Where else do you find a language with enough useful higher-order functions for the community to be able to discourage new users from writing loops? Some examples:</p>
 <ul>
 <li>All of the functional programming toys that you could want are easily found in R, e.g.&nbsp;closures, anonymous functions, and higher-order functions like <code>Map()</code>, <code>Filter()</code>, and <code>Reduce()</code>. Once you’re used to them, you can write some very expressive code.</li>
@@ -361,8 +361,8 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <li>Code like <code>Vectorize(foo)(1:100)</code> is not particularly hard to understand, but I’d struggle to name another language that lets me do the same thing with so much ease.</li>
 </ul>
 </section>
-<section id="first-class-environments" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</h3>
+<section id="sec-first-class-environments" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</h3>
 <p>Not only are functions first-class in R, environments are too. You therefore have lots of control over what environment an expression is evaluated in. This is an amazing source of power that tends to scare off beginners, but I cannot overstate how much of an asset it can be. If you’re not familiar with the below, look it up. You will not regret it.</p>
 <ul>
 <li>Because R’s environments are first-class, functions like <code>with()</code> and <code>within()</code> can generate them on the fly. I’ve seen this called “<em>data masking</em>”. <a href="https://adv-r.hadley.nz/translation.html"><em>Advanced R</em> has a whole chapter on it</a>. It lets you do things like “<em>treat this list of functions as if it were a namespace, so I can write code that uses function names that I wouldn’t dare use elsewhere</em>”. This can also be used with data. For example, <code>tapply(mtcars$mpg, list(mtcars$cyl, mtcars$gear), mean)</code> uses <code>mtcars</code> far too many times, but <code>with(mtcars, tapply(mpg, list(cyl, gear), mean))</code> gives us an easy fix. Ad-hoc namespaces are an amazing thing to have, particularly when using functions that don’t have a <code>data</code> argument (e.g.&nbsp;<code>plot()</code>).</li>
@@ -371,12 +371,12 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 </ul>
 <p>You might have spotted a pattern by now. R often lets you do very much with very little.</p>
 </section>
-<section id="generic-functions" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</h3>
+<section id="sec-generic-functions" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="sec-generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</h3>
 <p>Generic function OO is pretty nice to have, even if I wouldn’t use anything more complicated than S3. Being able to call <code>foo(whatever)</code> and be confident that it’s going to do what I mean is always nice. Some positives of R’s approach are:</p>
 <ul>
-<li><p>As mentioned <a href="#mathematics-and-statistics">earlier on</a>, S3 is used excellently in the base R stats library. Functions like <code>print()</code>, <code>plot()</code>, and <code>summary()</code> almost always tell me everything that I wanted to know and tell me them with great clarity.</p></li>
-<li><p>When you’re not trapped by <a href="what_r_does_wrong.html#generic-functions-again">the technicalities</a>, S3 is an outstandingly simple tool that does exactly what R needs it to do. Have a look at all of the methods that the pre-loaded libraries define for <code>plot()</code></p>
+<li><p>As mentioned <a href="#sec-mathematics-and-statistics">earlier on</a>, S3 is used excellently in the base R stats library. Functions like <code>print()</code>, <code>plot()</code>, and <code>summary()</code> almost always tell me everything that I wanted to know and tell me them with great clarity.</p></li>
+<li><p>When you’re not trapped by <a href="what_r_does_wrong.html#sec-generic-functions-again">the technicalities</a>, S3 is an outstandingly simple tool that does exactly what R needs it to do. Have a look at all of the methods that the pre-loaded libraries define for <code>plot()</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -404,22 +404,22 @@ see '?methods' for accessing help and source code</code></pre>
 </ul>
 </section>
 </section>
-<section id="syntax" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="syntax"><span class="header-section-number">3.6</span> Syntax</h2>
+<section id="sec-syntax" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-syntax"><span class="header-section-number">3.6</span> Syntax</h2>
 <p>Some of the syntax is nice:</p>
 <ul>
-<li><a href="what_r_does_wrong.html#sequences">It can cause you problems</a>, but the <code>:</code> operator is handy for things like <code>for(i in 1:20){...}</code>.</li>
+<li><a href="what_r_does_wrong.html#sec-sequences">It can cause you problems</a>, but the <code>:</code> operator is handy for things like <code>for(i in 1:20){...}</code>.</li>
 <li>The <code>for</code> loop syntax is always the same: <code>for(element in vector){...}</code>. This means that there is no difference between the typical “<em>do n times</em>” case like <code>for(i in 1:n)</code> and the “<em>for every member of this collection</em>” case like <code>for(v in sample(20))</code>. I appreciate the consistency.</li>
 <li>The <code>...</code> notation has a very nice “<em>do what I mean</em>” feel, particularly when you’re playing around with anonymous functions.</li>
 <li>Because of <code>repeat</code> loops, you never need to write <code>while(TRUE)</code>.</li>
-<li><a href="what_r_does_wrong.html#subsetting">Although I have major issues with them</a>, the rules for accessing elements sometimes give nice results. For example <code>array[c(i, j)] &lt;- array[c(j, i)]</code> swaps elements <code>i</code> and <code>j</code> in a very clean way.</li>
+<li><a href="what_r_does_wrong.html#sec-subsetting">Although I have major issues with them</a>, the rules for accessing elements sometimes give nice results. For example <code>array[c(i, j)] &lt;- array[c(j, i)]</code> swaps elements <code>i</code> and <code>j</code> in a very clean way.</li>
 <li>It’s nice to be able to do many variable assignments in one line e.g.&nbsp;<code>Alice &lt;- Bob &lt;- "Married"</code>. The best examples are when you do something like <code>lastElement &lt;- output[lastIndex &lt;- lastIndex + 1] &lt;- foo</code>, letting you avoid having to do anything twice.</li>
 <li>The syntax for manipulating environments makes sense. You have to learn the difference between <code>&lt;-</code> and <code>&lt;&lt;-</code> , but having environments use a subset of the list syntax was a very good idea. It was a similarly good idea to have a lot of R’s internals (e.g.&nbsp;quoted function calls) be pairlists. This lets them be manipulated in exactly the same way as lists. The similarities between lists, pairlists, environments, and data frames go deeper than you may expect. For example, the <code>eval()</code> function lets you evaluate an expression in the specified environment, but it’s happy to take any of the data types that I’ve just listed in place of an environment. At times, R almost lets you forget that lists and environments aren’t the same thing.</li>
 <li>The function names for making and manipulating S4 objects and functions are generally what you would expect them to be. For example, once you know <code>setClass()</code> and <code>setGeneric()</code>, you can probably guess what the corresponding function for methods is called.</li>
 </ul>
 </section>
-<section id="miscellaneous-positives" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</h2>
+<section id="sec-miscellaneous-positives" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</h2>
 <ul>
 <li>The built-in vectors <code>letters</code> and <code>LETTERS</code> come in handy surprisingly often. You’ll see me use them a lot.</li>
 <li>The base library surprises me from time to time. It’s always worth putting what you want in to a search engine; Sometimes, you’ll find it. My most recent surprises were <code>findInterval()</code> and <code>cut()</code>.</li>
