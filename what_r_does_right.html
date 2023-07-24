@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="What follows is an account of my experiences from about one year of roughly daily R usage.">
+
+<title>Frustration: One Year With R - 3&nbsp; What R Does Right</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./what_r_does_wrong.html" rel="next">
+<link href="./general_feelings.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./what_r_does_right.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What R Does Right</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Frustration: One Year With R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./general_feelings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">General Feelings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_r_does_right.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What R Does Right</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_r_does_wrong.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What R Does Wrong</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./the_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./feedback.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feedback</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mathematics-and-statistics" id="toc-mathematics-and-statistics" class="nav-link active" data-scroll-target="#mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</a></li>
+  <li><a href="#names-and-data-frames" id="toc-names-and-data-frames" class="nav-link" data-scroll-target="#names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</a></li>
+  <li><a href="#outstanding-packages" id="toc-outstanding-packages" class="nav-link" data-scroll-target="#outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</a></li>
+  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">3.4</span> Vectorization</a></li>
+  <li><a href="#functional-programming" id="toc-functional-programming" class="nav-link" data-scroll-target="#functional-programming"><span class="header-section-number">3.5</span> Functional Programming</a>
+  <ul class="collapse">
+  <li><a href="#first-class-functions" id="toc-first-class-functions" class="nav-link" data-scroll-target="#first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</a></li>
+  <li><a href="#first-class-environments" id="toc-first-class-environments" class="nav-link" data-scroll-target="#first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</a></li>
+  <li><a href="#generic-functions" id="toc-generic-functions" class="nav-link" data-scroll-target="#generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</a></li>
+  </ul></li>
+  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax"><span class="header-section-number">3.6</span> Syntax</a></li>
+  <li><a href="#miscellaneous-positives" id="toc-miscellaneous-positives" class="nav-link" data-scroll-target="#miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What R Does Right</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>As a final show of good faith, here is what I think R does right. In summary, along with having some great functional programming toys, R has some domain-specific tools that can work excellently when they’re in their element. Whatever the faults of R, it’s always going to be my first choice for some problems.</p>
+<section id="mathematics-and-statistics" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="mathematics-and-statistics"><span class="header-section-number">3.1</span> Mathematics and Statistics</h2>
+<p>R wants to be a mathematics and statistics tool. Many of its fundamental design choices support this. For example, vectors are primitive types and R isn’t at all shy about giving you a table or matrix as output. Similarly, the base libraries are packed with maths and stats functions that are usually a good combination of relevant, generic, and helpful. Some examples:</p>
+<ul>
+<li><p>Lots of stats is made easy. Commands like <code>boxplot(data)</code> or <code>quantile(data)</code> just work and there are lots of handy functions like <code>colSums()</code>, <code>table()</code>, <code>cor()</code>, or <code>summary()</code>.</p></li>
+<li><p>R is <strong>the</strong> language of research-level statistics. If it’s stats, R either has it built-in or has a library for it. It’s impossible to visit a statistics Q&amp;A website and not see R code. For this reason alone, R will never truly die.</p></li>
+<li><p>The generic functions in the base stats library work magic. Whenever you try to print or summarise a model from there, you’re going to get all of the details that you could ever realistically ask for and you’re going to get them presented in a very helpful way. For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt, data = mtcars)
+
+Coefficients:
+(Intercept)           wt  
+     37.285       -5.344  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.5432 -2.3647 -0.1252  1.4096  6.8727 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***
+wt           -5.3445     0.5591  -9.559 1.29e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.046 on 30 degrees of freedom
+Multiple R-squared:  0.7528,  Adjusted R-squared:  0.7446 
+F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
+</div>
+</div>
+<p>shows us plenty of useful information and works just as well even if we change to another type of model. Your mileage may vary with packages, but it usually works as expected. Other examples are easy to come by, e.g.&nbsp;<code>plot(model)</code>.</p></li>
+<li><p>The rules for subsetting data, although requiring mastery, are extremely expressive. Coupled with sub-assignment tricks like <code>result[result &lt; 0.5] &lt;- 0</code>, which often do exactly what you think they will, you can really save yourself a lot of work. Being able to demand precisely what parts of your data that you want to see or change is a really great feature.</p></li>
+<li><p>The factor and ordered data types are definitely the sort of tools that I want to have in a stats language. <a href="what_r_does_wrong.html#factor-variables">They’re a bit unpredictable</a>, but they’re great when they work.</p></li>
+<li><p>It’s no surprise that an R terminal has fully replaced my OS’s built-in calculator. It’s my first choice for any arithmetical task. When checking a gaming problem, I once opened R and used <code>(0.2 * seq(1000, 1300, 50) + 999) / seq(1000, 1300, 50)</code>. That would’ve been several lines in many other languages. Furthermore, a general-purpose language that was capable of the same would’ve had a call to something long-winded like <code>math.vec.seq()</code> rather than just <code>seq()</code>. I find the cumulative functions, e.g.&nbsp;<code>cumsum()</code> and <code>cummax()</code>, similarly enjoyable.</p></li>
+<li><p>How many other language have matrix algebra fully built-in? Solving systems of linear equations is just <code>solve()</code>.</p></li>
+<li><p>The <code>rep()</code> function is outstandingly versatile. I’d give examples, but those found in its documentation are more than sufficient. Open up R and run <code>example(rep)</code> if you want to see them. If tricks like <code>cbind(rep(1:6, each = 6), rep(1:6, times = 6))</code> have yet to become second nature, then you’re really missing out.</p></li>
+<li><p>On top of replacing your computer’s calculator, R can replace your graphing calculator as well. Unless you need to tinker with the axes or stop the asymptotes causing you problems – problems that your graphing calculator would give you anyway – functions like <code>curve(x / (x^3 + 9), -10, 10)</code> (output below) do exactly what you would expect and exactly how.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="what_r_does_right_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="names-and-data-frames" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="names-and-data-frames"><span class="header-section-number">3.2</span> Names and Data Frames</h2>
+<p>These seem like trivial features, but the language’s deep integration of them is extremely beneficial for manipulating and presenting your data. They assist subsetting, variable creation, plotting, printing, and even <a href="#first-class-environments">metaprogramming</a>.</p>
+<ul>
+<li><p>The ability to name the components of vectors, e.g.&nbsp;<code>c(Fizz=3, Buzz=5)</code>, is a nice trick for toy programs. The same syntax is used to much greater effect with lists, data frames, and S4 objects. However, it’s good to show how far you can get with even the most basic case. Here’s my submission for a <a href="https://rosettacode.org/wiki/General_FizzBuzz">General FizzBuzz</a> task:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>namedGenFizzBuzz <span class="ot">&lt;-</span> <span class="cf">function</span>(n, namedNums)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  factors <span class="ot">&lt;-</span> <span class="fu">sort</span>(namedNums)<span class="co">#Required by the task: We must go from least factor to greatest.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    isFactor <span class="ot">&lt;-</span> i <span class="sc">%%</span> factors <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="cf">if</span>(<span class="fu">any</span>(isFactor)) <span class="fu">paste0</span>(<span class="fu">names</span>(factors)[isFactor], <span class="at">collapse =</span> <span class="st">""</span>) <span class="cf">else</span> i)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>namedNums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Fizz=</span><span class="dv">3</span>, <span class="at">Buzz=</span><span class="dv">5</span>, <span class="at">Baxx=</span><span class="dv">7</span>)<span class="co">#Notice that we can name our inputs without a function call.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">namedGenFizzBuzz</span>(<span class="dv">105</span>, namedNums)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’ve little doubt that an R guru could improve this, but the amount of expressiveness in each line is already impressive. A lot of that is owed to R’s love for names.</p></li>
+<li><p>Having a tabular data type in your base library – the data frame – is very handy for when you want a nice way to present your results without having to bother importing anything. Due to this and the aforementioned ability to name vectors, my output in coding challenges often looks nicer than most other people’s.</p></li>
+<li><p>I like how data frames are constructed. Even if you don’t know any R at all, it’s pretty obvious what <code>data.frame(who = c("Alice", "Bob"),  height = c(1.2, 2.3))</code> produces and what adding the <code>row.names = c("1st subject", "2nd subject")</code> argument would do.</p></li>
+<li><p>As a non-trivial example of how far these features can get you, I’ve had some good fun making alists out of syntactically valid expressions and using only those alists to build a data frame where both the expressions and their evaluated values are shown:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>expressions <span class="ot">&lt;-</span> <span class="fu">alist</span>(<span class="sc">-</span>x <span class="sc">^</span> p, <span class="sc">-</span>(x) <span class="sc">^</span> p, (<span class="sc">-</span>x) <span class="sc">^</span> p, <span class="sc">-</span>(x <span class="sc">^</span> p))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                     p,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">setNames</span>(<span class="fu">lapply</span>(expressions, eval), <span class="fu">sapply</span>(expressions, deparse)),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(output, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x p -x^p -(x)^p (-x)^p -(x^p)
+ -5 2  -25    -25     25    -25
+ -5 3  125    125    125    125
+  5 2  -25    -25     25    -25
+  5 3 -125   -125   -125   -125</code></pre>
+</div>
+</div></li>
+</ul>
+<p>(stolen from my submission <a href="https://rosettacode.org/wiki/Exponentiation_with_infix_operators_in_(or_operating_on)_the_base">here</a>). Did you notice that the output knew the names of <code>x</code> and <code>p</code> without being told them? Did you also notice that a similar thing happened in after our call to <code>curve()</code> earlier on? Finally, did you notice how easy it was to get such neat output?</p>
+</section>
+<section id="outstanding-packages" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="outstanding-packages"><span class="header-section-number">3.3</span> Outstanding Packages</h2>
+<p><a href="index.html#ignorance">I’ve already admitted a great deal of ignorance of this topic</a>, but there are some parts of R’s ecosystem that I’m happy to call outstanding. The below are all things that I’m sure to miss in other languages.</p>
+<ul>
+<li><code>corrplot</code>: It has less than ten functions, but it only needed one to blow my mind. Once you’ve even as much as read <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html">the introduction</a>, you will never try to read a correlation matrix again.</li>
+<li><code>ggplot2</code>: I’m not experienced enough to know what faults it has, but it’s fun to use. That single fact makes it blow any other graphing software that I’ve used out of the water: <strong>It’s fun</strong>.</li>
+<li><code>magrittr</code>: It sold me on pipes. I’d say that any package that makes you consider changing your programming style is automatically outstanding. However, the real reason why I love it is because whenever I’ve run <code>bigLongExpression()</code> in my console and decided that I really wanted <code>foo()</code> of it, it’s so much easier to press the up arrow and type CTRL+SHIFT+M+“foo” than it is to do anything that results in <code>foo(bigLongExpression())</code> appearing. Maybe there’s a keyboard shortcut that I never learned, but this isn’t the only reason why I love <code>magrittr</code>. <a href="the_tidyverse.html#magrittr">I’ll say more about it much later</a>.</li>
+<li><code>R Markdown</code> has served me well in writing this document. It’s buggier than I’d like, rarely has helpful error messages, and does things that I can’t explain or fix even after setting a bounty on Stack Overflow, but it’s still a great way to make a document from R. It’s the closest thing that I know of to an R user’s LaTeX. I had to wait on <a href="https://github.com/rstudio/rmarkdown/pull/2093">this bug fix</a> before I could start numbering my sections. Hopefully it didn’t break anything.</li>
+</ul>
+</section>
+<section id="vectorization" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="vectorization"><span class="header-section-number">3.4</span> Vectorization</h2>
+<p><a href="what_r_does_wrong.html#vectorization-again">When it’s not causing you problems</a>, the vectorization can be the best thing about the language:</p>
+<ul>
+<li><p>The vector recycling rules are powerful when mastered. Expressions like <code>c("x", "y")[rep(c(1, 2), times = 4)]</code> let you do a lot with only a little work. My favourite ever FizzBuzz could well be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">100</span>), <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>, <span class="st">"Fizz"</span>), <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"Buzz"</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="st">""</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, x), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<p>I wish that I could claim credit for that, but I stole it from an old version of <a href="https://rosettacode.org/wiki/FizzBuzz#R">this page</a> and improved it a little.</p>
+<ul>
+<li>Basically everything is a vector, so R comes with some great vector-manipulation tools like <code>ifelse()</code> (seen above) and makes it very easy to use a function on a collection. Can you believe that <code>mtcars / 20</code> actually works?</li>
+<li>Tricks like <code>array / seq_along(array)</code> save a lot of loop writing.</li>
+<li>Even simple things like being able to subtract a vector from a constant (e.g.&nbsp;<code>10 - 1:5</code>) and get a sensible result are a gift when doing mathematics.</li>
+<li>Vectorization of functions is sometimes very useful, particularly when it lets you do what should’ve been two loops worth of work in one line. You’d be amazed by how often you can get away with calling <code>foo(1:100)</code> without needing to vectorize <code>foo()</code> yourself.</li>
+</ul>
+</section>
+<section id="functional-programming" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="functional-programming"><span class="header-section-number">3.5</span> Functional Programming</h2>
+<p>R’s done a good job of harnessing the power of functional languages while maintaining a C-like syntax. It makes no secret of being inspired by Scheme and has reaped many of its benefits.</p>
+<section id="first-class-functions" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="first-class-functions"><span class="header-section-number">3.5.1</span> First-class Functions</h3>
+<p>It’s impossible to not notice that functions are first-class in R. You’re almost forced to learn functional programming idioms like mapping functions, higher-order functions, and anonymous functions. This is a good thing. Where else do you find a language with enough useful higher-order functions for the community to be able to discourage new users from writing loops? Some examples:</p>
+<ul>
+<li>All of the functional programming toys that you could want are easily found in R, e.g.&nbsp;closures, anonymous functions, and higher-order functions like <code>Map()</code>, <code>Filter()</code>, and <code>Reduce()</code>. Once you’re used to them, you can write some very expressive code.</li>
+<li>The apply family of functions is basically a set of DSL mapping functions for stats. Both <code>apply()</code> and <code>tapply()</code> can produce some very concise code, as can related functions like <code>by()</code>.</li>
+<li>Where else can you write functions that are both anonymous and recursive? Not that you should, of course.</li>
+<li>First-class functions sometimes interact with R’s vectorization obsession in a very entertaining way. In how many other languages do you see somebody take a list of functions and, in a single line, call them all with a vector as a single argument to each function? Code like <code>lapply(listOfFuns, function(f) f(1:10))</code> is entirely valid. It calls each function in <code>listOfFuns</code> with the entire vector <code>1:10</code> as their first argument.</li>
+<li>Code like <code>Vectorize(foo)(1:100)</code> is not particularly hard to understand, but I’d struggle to name another language that lets me do the same thing with so much ease.</li>
+</ul>
+</section>
+<section id="first-class-environments" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="first-class-environments"><span class="header-section-number">3.5.2</span> First-class Environments</h3>
+<p>Not only are functions first-class in R, environments are too. You therefore have lots of control over what environment an expression is evaluated in. This is an amazing source of power that tends to scare off beginners, but I cannot overstate how much of an asset it can be. If you’re not familiar with the below, look it up. You will not regret it.</p>
+<ul>
+<li>Because R’s environments are first-class, functions like <code>with()</code> and <code>within()</code> can generate them on the fly. I’ve seen this called “<em>data masking</em>”. <a href="https://adv-r.hadley.nz/translation.html"><em>Advanced R</em> has a whole chapter on it</a>. It lets you do things like “<em>treat this list of functions as if it were a namespace, so I can write code that uses function names that I wouldn’t dare use elsewhere</em>”. This can also be used with data. For example, <code>tapply(mtcars$mpg, list(mtcars$cyl, mtcars$gear), mean)</code> uses <code>mtcars</code> far too many times, but <code>with(mtcars, tapply(mpg, list(cyl, gear), mean))</code> gives us an easy fix. Ad-hoc namespaces are an amazing thing to have, particularly when using functions that don’t have a <code>data</code> argument (e.g.&nbsp;<code>plot()</code>).</li>
+<li>Modelling functions like <code>lm()</code> use the data-masking facilities that I’ve just described, as do handy functions like <code>subset()</code>. This saves incredible amounts of typing and massively increases the readability of your stats code. For example, <code>aggregate(mpg ~ cyl + gear, mtcars, mean)</code> returns very similar output to my above calls to <code>tapply()</code> without needing the complexity of using <code>with()</code>. It also allows for ridiculously concise code like <code>aggregate(. ~ cyl + gear, mtcars, mean)</code>.</li>
+<li>You can write your own data-masking functions. Doing so relies on controlling the non-standard evaluation of some of your arguments and is the closest thing that R has to metaprogramming. The names mechanisms do a lot to remove any ambiguity from your attempts at this. Stealing an example from the documentation, do I even need to explain what <code>transform(airquality, new = -Ozone, Temp = (Temp-32)/1.8)</code> does? Being able to do all of that in one line is outstanding. Without R allowing developers to add new functions like this, the Tidyverse would’ve been impossible.</li>
+</ul>
+<p>You might have spotted a pattern by now. R often lets you do very much with very little.</p>
+</section>
+<section id="generic-functions" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="generic-functions"><span class="header-section-number">3.5.3</span> Generic Functions</h3>
+<p>Generic function OO is pretty nice to have, even if I wouldn’t use anything more complicated than S3. Being able to call <code>foo(whatever)</code> and be confident that it’s going to do what I mean is always nice. Some positives of R’s approach are:</p>
+<ul>
+<li><p>As mentioned <a href="#mathematics-and-statistics">earlier on</a>, S3 is used excellently in the base R stats library. Functions like <code>print()</code>, <code>plot()</code>, and <code>summary()</code> almost always tell me everything that I wanted to know and tell me them with great clarity.</p></li>
+<li><p>When you’re not trapped by <a href="what_r_does_wrong.html#generic-functions-again">the technicalities</a>, S3 is an outstandingly simple tool that does exactly what R needs it to do. Have a look at all of the methods that the pre-loaded libraries define for <code>plot()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] plot.acf*           plot.data.frame*    plot.decomposed.ts*
+ [4] plot.default        plot.dendrogram*    plot.density*      
+ [7] plot.ecdf           plot.factor*        plot.formula*      
+[10] plot.function       plot.hclust*        plot.histogram*    
+[13] plot.HoltWinters*   plot.isoreg*        plot.lm*           
+[16] plot.medpolish*     plot.mlm*           plot.ppr*          
+[19] plot.prcomp*        plot.princomp*      plot.profile.nls*  
+[22] plot.raster*        plot.spec*          plot.stepfun       
+[25] plot.stl*           plot.table*         plot.ts            
+[28] plot.tskernel*      plot.TukeyHSD*     
+see '?methods' for accessing help and source code</code></pre>
+</div>
+</div></li>
+</ul>
+<p>because a statistician often only need to dispatch on the type of model being used, S3 is the perfect tool to make functions like <code>plot()</code> easy to extend, meaning that it’s easy to make it give your users exactly what they want. This isn’t just theoretical either. The output for <code>methods(plot)</code> gets a lot longer if I go through my list of packages and start loading some random number of them. Go try it yourself!</p>
+<ul>
+<li>S3 generics and objects are very easy to write. The trade-off is that they don’t do anything to protect you from yourself. However, being able to tell R to shut up and do what I want it to a nice part of S3.</li>
+<li>I like the idea of S3’s group generics, but I don’t like not being able to make my own. However, I think that you can do it for S4.</li>
+<li>I have it on good authority that biology people often need to dispatch on more than one type of model at a time. This means that they shower the S4 object system with greater praise than what I’ve just given S3. Apparently, the <code>bioconductor</code> package is the outstanding example of their love of it.</li>
+<li>S4 has multiple inheritance and multiple dispatch. I’m not going to say that multiple inheritance is a good thing, but it’s not always found in other OOP systems.</li>
+<li>RC and the <code>R6</code> package are about as close as you’re ever going to get to having Java-like OOP in a mostly function language.</li>
+</ul>
+</section>
+</section>
+<section id="syntax" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="syntax"><span class="header-section-number">3.6</span> Syntax</h2>
+<p>Some of the syntax is nice:</p>
+<ul>
+<li><a href="what_r_does_wrong.html#sequences">It can cause you problems</a>, but the <code>:</code> operator is handy for things like <code>for(i in 1:20){...}</code>.</li>
+<li>The <code>for</code> loop syntax is always the same: <code>for(element in vector){...}</code>. This means that there is no difference between the typical “<em>do n times</em>” case like <code>for(i in 1:n)</code> and the “<em>for every member of this collection</em>” case like <code>for(v in sample(20))</code>. I appreciate the consistency.</li>
+<li>The <code>...</code> notation has a very nice “<em>do what I mean</em>” feel, particularly when you’re playing around with anonymous functions.</li>
+<li>Because of <code>repeat</code> loops, you never need to write <code>while(TRUE)</code>.</li>
+<li><a href="what_r_does_wrong.html#subsetting">Although I have major issues with them</a>, the rules for accessing elements sometimes give nice results. For example <code>array[c(i, j)] &lt;- array[c(j, i)]</code> swaps elements <code>i</code> and <code>j</code> in a very clean way.</li>
+<li>It’s nice to be able to do many variable assignments in one line e.g.&nbsp;<code>Alice &lt;- Bob &lt;- "Married"</code>. The best examples are when you do something like <code>lastElement &lt;- output[lastIndex &lt;- lastIndex + 1] &lt;- foo</code>, letting you avoid having to do anything twice.</li>
+<li>The syntax for manipulating environments makes sense. You have to learn the difference between <code>&lt;-</code> and <code>&lt;&lt;-</code> , but having environments use a subset of the list syntax was a very good idea. It was a similarly good idea to have a lot of R’s internals (e.g.&nbsp;quoted function calls) be pairlists. This lets them be manipulated in exactly the same way as lists. The similarities between lists, pairlists, environments, and data frames go deeper than you may expect. For example, the <code>eval()</code> function lets you evaluate an expression in the specified environment, but it’s happy to take any of the data types that I’ve just listed in place of an environment. At times, R almost lets you forget that lists and environments aren’t the same thing.</li>
+<li>The function names for making and manipulating S4 objects and functions are generally what you would expect them to be. For example, once you know <code>setClass()</code> and <code>setGeneric()</code>, you can probably guess what the corresponding function for methods is called.</li>
+</ul>
+</section>
+<section id="miscellaneous-positives" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="miscellaneous-positives"><span class="header-section-number">3.7</span> Miscellaneous Positives</h2>
+<ul>
+<li>The built-in vectors <code>letters</code> and <code>LETTERS</code> come in handy surprisingly often. You’ll see me use them a lot.</li>
+<li>The base library surprises me from time to time. It’s always worth putting what you want in to a search engine; Sometimes, you’ll find it. My most recent surprises were <code>findInterval()</code> and <code>cut()</code>.</li>
+<li>The <code>na.print</code> argument to <code>print()</code>, trivial as it is, can be a thing of beauty.</li>
+<li>R’s condition handling and recovery system is build atop S3, making it extremely customisable by letting you add and handle custom metadata pretty much however you want. It also has some nice built-in types of conditions like errors, warnings, and messages, as well as having <code>finally</code> blocks in <code>tryCatch()</code>. The only real oddity of the system is that its conditionals are treated as functions of the error, meaning that you will have to write strange code like <code>tryCatch(code, error = function(unused) "error", warning = function(unused) "warning")</code>. However, this is the price that you pay for being able to use code like <code>tryCatch(code, myError = function(e) paste0(e$message, " was triggered by ",e$call,". Try ",e$suggestion)</code>. As a final point of interest, I’ve heard that R’s condition handling system is one of the best copies of Common Lisp’s, which I’ve heard awesome things about.</li>
+<li>Speaking of Lisp, <a href="https://en.wikipedia.org/wiki/XLispStat">statistical Lisps used to be a thing</a>. I’ve heard rumours of them still being used in Japan, but I can’t find anything to back that up. Everything that I’ve found says that <a href="https://www.jstatsoft.org/article/view/v013i07/v13i07.pdf">R killed them off</a>. As far as I know, nobody’s tried to make another such Lisp since the 90’s. The fact that R can claim to have eradicated an entire category of language design is a great point in its favour. It’s also possible evidence that I’m correct to say that R resembling C is to its benefit. However, I’d be overjoyed to hear of such Lisps making a comeback. Imagine if we’re just one good Clojure library away from R surrendering to its Scheme roots and birthing a modern statistical Lisp.</li>
+<li>Base R is quite stable. Breaking changes are almost unheard of. I don’t agree that they should be trying so hard to maintain compatibility with S, but this is an undeniable benefit of that decision.</li>
+<li>The fact that the Tidyverse is just an R library, rather than an entirely separate language, is a testament to R’s metaprograming. I like being able to define new infix operators and replacement functions, but the Tidyverse went above and beyond. Where else do you see an entire library of pipes? Until very recently, base R didn’t even have pipes!</li>
+<li>The Tidyverse is proof that people are trying to fix R. Although that comes with the implication that R is broken, the fact that people are both willing and able to fix it definitely says something nice about R.</li>
+<li>I generally like the RStudio IDE. When Emacs is the only alternative that anyone takes seriously, you know that you’ve done a good job.</li>
+<li>There is only one implementation of R that anyone’s ever heard of, so you never need to worry about undefined behaviour.</li>
+<li>There’s something hilarious about R being a language where dangerous forbidden techniques actually run. In most other languages, comments that read <code># FORBIDDEN</code> would indicate that the code produces some sort of error. <a href="https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf">Not R</a>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./general_feelings.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">General Feelings</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./what_r_does_wrong.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What R Does Wrong</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
