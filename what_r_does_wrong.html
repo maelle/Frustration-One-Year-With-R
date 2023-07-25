@@ -1847,7 +1847,7 @@ object length</code></pre>
 <pre><code>function (n, expr, simplify = "array") 
 sapply(integer(n), eval.parent(substitute(function(...) expr)), 
     simplify = simplify)
-&lt;bytecode: 0x5556cb1fa060&gt;
+&lt;bytecode: 0x559460fcbb90&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div></li>
@@ -1863,7 +1863,7 @@ sapply(integer(n), eval.parent(substitute(function(...) expr)),
         X &lt;- as.list(X)
     .Internal(lapply(X, FUN))
 }
-&lt;bytecode: 0x5556c7960b80&gt;
+&lt;bytecode: 0x55945d734b80&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div></li>
@@ -1998,26 +1998,34 @@ attr(,"names")
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 4 7 2 5 8 3 6 9</code></pre>
 </div>
-</div></li>
-</ul>
+</div>
 <p>At worst, it doesn’t do anything like what you wanted.</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb355"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb355-1"><a href="#cb355-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb355-2"><a href="#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mat, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: {.cell-output .cell-output-stdout} <code>[1] 1 4 7 2 5 8 3 6 9</code> ::: :::</p>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4 7 2 5 8 3 6 9</code></pre>
+</div>
+</div>
 <p>The trick for avoiding this is to use numbers as your data argument and let subsetting be the function.</p>
-<p>::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb356"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb356-1"><a href="#cb356-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb356-2"><a href="#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">sum</span>(mat[x, ]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: {.cell-output .cell-output-stdout} <code>[1]  6 15 24</code> :::</p>
-<div class="sourceCode cell-code" id="cb357"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb357-1"><a href="#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">max</span>(mat[x, ]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: {.cell-output .cell-output-stdout} <code>[1] 3 6 9</code> ::: :::</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb357"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb357-1"><a href="#cb357-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb357-2"><a href="#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">sum</span>(mat[x, ]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  6 15 24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb359"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb359-1"><a href="#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">max</span>(mat[x, ]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 6 9</code></pre>
+</div>
+</div></li>
+</ul>
 <p>Better yet, just use <code>apply()</code>.</p>
 <p>::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb358"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb358-1"><a href="#cb358-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb358-2"><a href="#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="at">MARGIN =</span> <span class="dv">1</span>, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb361"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb361-1"><a href="#cb361-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb361-2"><a href="#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="at">MARGIN =</span> <span class="dv">1</span>, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>::: {.cell-output .cell-output-stdout} <code>[1]  6 15 24</code> :::</p>
-<div class="sourceCode cell-code" id="cb359"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb359-1"><a href="#cb359-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">apply</span>(mat, <span class="at">MARGIN =</span> <span class="dv">1</span>, max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb362"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb362-1"><a href="#cb362-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">apply</span>(mat, <span class="at">MARGIN =</span> <span class="dv">1</span>, max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>::: {.cell-output .cell-output-stdout} <code>[1] 3 6 9</code> ::: :::</p>
 <p>But why did we have the learn any of this in the first place?</p>
 <ul>
@@ -2101,12 +2109,12 @@ attr(,"names")
 <li><p>The documentation for <code>class()</code> uses vague statements like “<em>method dispatch may use more classes than are returned by <code>class(x)</code></em>”. May? <strong>MAY???</strong> What am I supposed to do with that? Where do I look for more info? It mentions <code>.class2()</code>, but warns you against using it. Why? It doesn’t say! Did you think that <code>.class2()</code> would have its own documentation somewhere else? It doesn’t! All of the documentation for <code>.class2()</code> is in the docs for <code>class()</code> and most of that is a warning to not use it!</p></li>
 <li><p>Call <code>class()</code> on a matrix and you will see that they have a few classes. However, <code>is.object()</code>, which has docs that correctly state that it will return <code>TRUE</code> for anything with a class attribute, returns <code>FALSE</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb360"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb360-1"><a href="#cb360-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">3</span>)</span>
-<span id="cb360-2"><a href="#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb363"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb363-1"><a href="#cb363-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">3</span>)</span>
+<span id="cb363-2"><a href="#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "matrix" "array" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb362"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb362-1"><a href="#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.object</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb365"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb365-1"><a href="#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.object</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2137,23 +2145,23 @@ attr(,"names")
 <ul>
 <li><p>Did you notice that <code>length()</code> is on the list mentioned above? This explains the inconsistency in how it behaves on data frames and matrices. You cannot properly extend internal generics with S3, so you cannot change how <code>length()</code> behaves on implicitly classed input. Data frames are non-implicitly lists and matrices are non-implicitly atomic vectors, so that’s how <code>length()</code> treats them. This issue isn’t unique to just data frames and matrices. <em>Advanced R</em> has <a href="https://adv-r.hadley.nz/s3.html#object-styles">a comical example in its S3 chapter</a>: Linear models, which are non-implicitly lists, have a length of about 12! My personal favourite is giving it quoted input:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb364"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb364-1"><a href="#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb367"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb367-1"><a href="#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb366"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb366-1"><a href="#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span> <span class="sc">+</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb369"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb369-1"><a href="#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span> <span class="sc">+</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb368"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb368-1"><a href="#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span> <span class="sc">+</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb371"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb371-1"><a href="#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">5</span><span class="sc">^</span><span class="dv">30</span> <span class="sc">+</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb370"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb370-1"><a href="#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb373"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb373-1"><a href="#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb372"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb372-1"><a href="#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="fu">length</span>(<span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb375"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb375-1"><a href="#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">quote</span>(<span class="fu">length</span>(<span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -2161,15 +2169,15 @@ attr(,"names")
 <p>You will find issues like this – i.e.&nbsp;unexpected and tough to explain output – whenever using or extending most internal generics; <code>length()</code> is just the easiest example to show.</p></li>
 <li><p>Did you notice that I lied about data frames? The careful reader will notice that due to having the real <code>data.frame</code> class, data frames don’t have any implicit classes. That’s a thing, by the way, having a real class means not having implicit classes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb374"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb374-1"><a href="#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(mtcars, <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb377"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb377-1"><a href="#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(mtcars, <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb376"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb376-1"><a href="#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb379"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb379-1"><a href="#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb378"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb378-1"><a href="#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.object</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb381"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb381-1"><a href="#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.object</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -2189,7 +2197,7 @@ attr(,"names")
 <li><p>If <a href="https://adv-r.hadley.nz/s4.html"><em>Advanced R’s</em> chapter on S4</a> is to be trusted, then the official documentation for S4 contains a lot of bad advice. I’ve not looked closely, but I have noticed that it shares R’s tendency to put many functions in one page of documentation and then not give examples for many of them. For example, <code>?getMethod</code> documents five functions, but only gives examples for two. Similarly, <code>@</code> has no examples in its documentation.</p></li>
 <li><p>S4 has some strange semantics. Why call something that is sometimes not a predicate function <code>is()</code>? Why does it use an <code>@</code> operator to do what the rest of R would use <code>$</code> for?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb380"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb380-1"><a href="#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb383"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb383-1"><a href="#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame" "list"       "oldClass"   "vector"    </code></pre>
 </div>
@@ -2204,20 +2212,20 @@ attr(,"names")
 <ul>
 <li><p>There is no base R function for extracting the original object from its corresponding factor. To extract your original set of numbers (assuming that they were numbers, if not, you get nonsense) from a factor variable called <code>f</code>, the documentation tells you to use either <code>as.numeric(levels(f))[f]</code> or the slower <code>as.numeric(as.character(f))</code>. Let’s use a bit more code than usual and show off what each of these functions do before and after composition:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb382"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb382-1"><a href="#cb382-1" aria-hidden="true" tabindex="-1"></a>  (withoutLabels <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">10</span>), <span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb385"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb385-1"><a href="#cb385-1" aria-hidden="true" tabindex="-1"></a>  (withoutLabels <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">10</span>), <span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2  4  6  8  10 2  4  6  8  10 2  4  6  8  10
 Levels: 2 4 6 8 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb384"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb384-1"><a href="#cb384-1" aria-hidden="true" tabindex="-1"></a>  (withLabels <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">10</span>), <span class="dv">3</span>), <span class="at">labels =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb387"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb387-1"><a href="#cb387-1" aria-hidden="true" tabindex="-1"></a>  (withLabels <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">10</span>), <span class="dv">3</span>), <span class="at">labels =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] A B C D E A B C D E A B C D E
 Levels: A B C D E</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb386"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb386-1"><a href="#cb386-1" aria-hidden="true" tabindex="-1"></a>  fList <span class="ot">&lt;-</span> <span class="fu">list</span>(withoutLabels, withLabels)</span>
-<span id="cb386-2"><a href="#cb386-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Just to make sure that we're on the same page, here's the output of str().</span></span>
-<span id="cb386-3"><a href="#cb386-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#The internal integers are in plain sight.</span></span>
-<span id="cb386-4"><a href="#cb386-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb389"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb389-1"><a href="#cb389-1" aria-hidden="true" tabindex="-1"></a>  fList <span class="ot">&lt;-</span> <span class="fu">list</span>(withoutLabels, withLabels)</span>
+<span id="cb389-2"><a href="#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Just to make sure that we're on the same page, here's the output of str().</span></span>
+<span id="cb389-3"><a href="#cb389-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#The internal integers are in plain sight.</span></span>
+<span id="cb389-4"><a href="#cb389-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 5 levels "2","4","6","8",..: 1 2 3 4 5 1 2 3 4 5 ...
  Factor w/ 5 levels "A","B","C","D",..: 1 2 3 4 5 1 2 3 4 5 ...</code></pre>
@@ -2229,8 +2237,8 @@ NULL
 [[2]]
 NULL</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb389"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb389-1"><a href="#cb389-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Nothing surprising to start:</span></span>
-<span id="cb389-2"><a href="#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb392"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb392-1"><a href="#cb392-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Nothing surprising to start:</span></span>
+<span id="cb392-2"><a href="#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "2"  "4"  "6"  "8"  "10"
@@ -2238,11 +2246,11 @@ NULL</code></pre>
 [[2]]
 [1] "A" "B" "C" "D" "E"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb391"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb391-1"><a href="#cb391-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#as.character() returns the non-attribute part of what you get when you print the factor</span></span>
-<span id="cb391-2"><a href="#cb391-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#i.e. the result of mapping its internal integers to its character vector of levels.</span></span>
-<span id="cb391-3"><a href="#cb391-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Notice that these are characters. It's not obvious from printing your factors that</span></span>
-<span id="cb391-4"><a href="#cb391-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#the non-attribute part becomes a character.</span></span>
-<span id="cb391-5"><a href="#cb391-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, as.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb394"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb394-1"><a href="#cb394-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#as.character() returns the non-attribute part of what you get when you print the factor</span></span>
+<span id="cb394-2"><a href="#cb394-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#i.e. the result of mapping its internal integers to its character vector of levels.</span></span>
+<span id="cb394-3"><a href="#cb394-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Notice that these are characters. It's not obvious from printing your factors that</span></span>
+<span id="cb394-4"><a href="#cb394-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#the non-attribute part becomes a character.</span></span>
+<span id="cb394-5"><a href="#cb394-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, as.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
  [1] "2"  "4"  "6"  "8"  "10" "2"  "4"  "6"  "8"  "10" "2"  "4"  "6"  "8"  "10"
@@ -2250,10 +2258,10 @@ NULL</code></pre>
 [[2]]
  [1] "A" "B" "C" "D" "E" "A" "B" "C" "D" "E" "A" "B" "C" "D" "E"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb393"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb393-1"><a href="#cb393-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calling `as.numeric()` on a factor does not return the original numbers.</span></span>
-<span id="cb393-2"><a href="#cb393-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#It returns the underlying integers.</span></span>
-<span id="cb393-3"><a href="#cb393-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Why would you ever want or expect these?</span></span>
-<span id="cb393-4"><a href="#cb393-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, as.numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb396"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb396-1"><a href="#cb396-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calling `as.numeric()` on a factor does not return the original numbers.</span></span>
+<span id="cb396-2"><a href="#cb396-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#It returns the underlying integers.</span></span>
+<span id="cb396-3"><a href="#cb396-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Why would you ever want or expect these?</span></span>
+<span id="cb396-4"><a href="#cb396-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, as.numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
@@ -2261,17 +2269,17 @@ NULL</code></pre>
 [[2]]
  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb395"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb395-1"><a href="#cb395-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subsetting with factors always treats them as their integer base type.</span></span>
-<span id="cb395-2"><a href="#cb395-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#If the factor fundamentally has nothing to do with integers</span></span>
-<span id="cb395-3"><a href="#cb395-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#(e.g. if you made the factor from something that was originally a set of characters),</span></span>
-<span id="cb395-4"><a href="#cb395-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#then you can expect nonsense.</span></span>
-<span id="cb395-5"><a href="#cb395-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#If the factor did originally have something to do with integers,</span></span>
-<span id="cb395-6"><a href="#cb395-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#then you're probably going to be very confused because it hasn't subsetted with</span></span>
-<span id="cb395-7"><a href="#cb395-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#the numbers that you get from printing the factor.</span></span>
-<span id="cb395-8"><a href="#cb395-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#In short, it's almost never a good idea, but R lets you do it anyway.</span></span>
-<span id="cb395-9"><a href="#cb395-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Now ask yourself: What is the point of having a categorical data type if</span></span>
-<span id="cb395-10"><a href="#cb395-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#it's not practical to subset with?</span></span>
-<span id="cb395-11"><a href="#cb395-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">levels</span>(f)[f])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb398"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb398-1"><a href="#cb398-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subsetting with factors always treats them as their integer base type.</span></span>
+<span id="cb398-2"><a href="#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#If the factor fundamentally has nothing to do with integers</span></span>
+<span id="cb398-3"><a href="#cb398-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#(e.g. if you made the factor from something that was originally a set of characters),</span></span>
+<span id="cb398-4"><a href="#cb398-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#then you can expect nonsense.</span></span>
+<span id="cb398-5"><a href="#cb398-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#If the factor did originally have something to do with integers,</span></span>
+<span id="cb398-6"><a href="#cb398-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#then you're probably going to be very confused because it hasn't subsetted with</span></span>
+<span id="cb398-7"><a href="#cb398-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#the numbers that you get from printing the factor.</span></span>
+<span id="cb398-8"><a href="#cb398-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#In short, it's almost never a good idea, but R lets you do it anyway.</span></span>
+<span id="cb398-9"><a href="#cb398-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Now ask yourself: What is the point of having a categorical data type if</span></span>
+<span id="cb398-10"><a href="#cb398-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#it's not practical to subset with?</span></span>
+<span id="cb398-11"><a href="#cb398-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">levels</span>(f)[f])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
  [1] "2"  "4"  "6"  "8"  "10" "2"  "4"  "6"  "8"  "10" "2"  "4"  "6"  "8"  "10"
@@ -2279,7 +2287,7 @@ NULL</code></pre>
 [[2]]
  [1] "A" "B" "C" "D" "E" "A" "B" "C" "D" "E" "A" "B" "C" "D" "E"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb397"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb397-1"><a href="#cb397-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">as.numeric</span>(<span class="fu">levels</span>(f))[f])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb400"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb400-1"><a href="#cb400-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">as.numeric</span>(<span class="fu">levels</span>(f))[f])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in FUN(X[[i]], ...): NAs introduced by coercion</code></pre>
 </div>
@@ -2290,7 +2298,7 @@ NULL</code></pre>
 [[2]]
  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb400"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb400-1"><a href="#cb400-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(f)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb403"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb403-1"><a href="#cb403-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(fList, <span class="cf">function</span>(f) <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(f)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in FUN(X[[i]], ...): NAs introduced by coercion</code></pre>
 </div>
@@ -2314,13 +2322,13 @@ NULL</code></pre>
 <ul>
 <li><p>You usually only see this when dealing with <code>names()</code>, but having a function that is both a setter and getter is a guaranteed source of confusion and found more than once in R. For example, <code>names(output)</code> will give you the names of <code>output</code>, but <code>names(output) &lt;- c("Alice", "Bob")</code> will change <code>output</code>’s names (it’s sugar for some complicated <code>"names&lt;-"</code> nonsense).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb403"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb403-1"><a href="#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb406"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb406-1"><a href="#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
 [11] "carb"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb405"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb405-1"><a href="#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
-<span id="cb405-2"><a href="#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb408"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb408-1"><a href="#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
+<span id="cb408-2"><a href="#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               A B   C   D   E     F     G H I J K
 Mazda RX4     21 6 160 110 3.9 2.620 16.46 0 1 4 4
@@ -2329,18 +2337,18 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 </div>
 <p>Now what do you think <code>names(foo) &lt;- names(bar)</code> does? Seriously, can you guess? I can think of roughly four realistic guesses. Is it even valid syntax? Here’s the truth:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb407"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb407-1"><a href="#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
-<span id="cb407-2"><a href="#cb407-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"example"</span>, <span class="st">"text"</span>), <span class="at">length.out =</span> <span class="dv">11</span>)</span>
-<span id="cb407-3"><a href="#cb407-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a) <span class="ot">&lt;-</span> LETTERS[<span class="dv">12</span><span class="sc">:</span><span class="dv">22</span>]</span>
-<span id="cb407-4"><a href="#cb407-4" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb410"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb410-1"><a href="#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
+<span id="cb410-2"><a href="#cb410-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"example"</span>, <span class="st">"text"</span>), <span class="at">length.out =</span> <span class="dv">11</span>)</span>
+<span id="cb410-3"><a href="#cb410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a) <span class="ot">&lt;-</span> LETTERS[<span class="dv">12</span><span class="sc">:</span><span class="dv">22</span>]</span>
+<span id="cb410-4"><a href="#cb410-4" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        L         M         N         O         P         Q         R         S 
 "example"    "text" "example"    "text" "example"    "text" "example"    "text" 
         T         U         V 
 "example"    "text" "example" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb409"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb409-1"><a href="#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a) <span class="ot">&lt;-</span> <span class="fu">names</span>(mtcars)</span>
-<span id="cb409-2"><a href="#cb409-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb412"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb412-1"><a href="#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a) <span class="ot">&lt;-</span> <span class="fu">names</span>(mtcars)</span>
+<span id="cb412-2"><a href="#cb412-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        A         B         C         D         E         F         G         H 
 "example"    "text" "example"    "text" "example"    "text" "example"    "text" 
@@ -2359,42 +2367,42 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 <ul>
 <li><p>Stuff like <code>i in 1:n</code> is great, but if you accidentally have <code>n &lt;= 0</code>, it silently gives behaviours that you probably don’t want.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb411"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb411-1"><a href="#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb414"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb414-1"><a href="#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb413"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb413-1"><a href="#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb416"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb416-1"><a href="#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb415"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb415-1"><a href="#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb418"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb418-1"><a href="#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb417"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb417-1"><a href="#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb420"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb420-1"><a href="#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  0 -1</code></pre>
 </div>
 </div>
 <p><code>seq_len()</code> is better behaved, so I try to stick to it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb419"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb419-1"><a href="#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb422"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb422-1"><a href="#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb421"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb421-1"><a href="#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb424"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb424-1"><a href="#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb423"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb423-1"><a href="#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb426"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb426-1"><a href="#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>integer(0)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb425"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb425-1"><a href="#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co">#seq_len(-1) is an error.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb428"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb428-1"><a href="#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co">#seq_len(-1) is an error.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>:</code> has operator precedence issues. You might expect stuff like <code>-6/2:3</code> to generate <code>(-(6/2)):3</code> i.e.&nbsp;<code>-3:3</code>. It doesn’t.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb426"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb426-1"><a href="#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">6</span><span class="sc">/</span><span class="dv">2</span><span class="sc">:</span><span class="dv">3</span> <span class="co">#Treated as -6/(2:3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb429"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb429-1"><a href="#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">6</span><span class="sc">/</span><span class="dv">2</span><span class="sc">:</span><span class="dv">3</span> <span class="co">#Treated as -6/(2:3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3 -2</code></pre>
 </div>
@@ -2402,7 +2410,7 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 </ul>
 <p>I’ll leave <code>-6/2:6/2</code> as an exercise for the reader. I’d like to keep things simple and say that the trick is that <code>:</code> is always evaluated first, but that’s actually not true. Even if we’re only talking about arithmetical operations, exponentiation is done before <code>:</code> is applied.</p>
 <p>::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb428"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb428-1"><a href="#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="co">#Treated as (3^1):5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb431"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb431-1"><a href="#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="co">#Treated as (3^1):5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>::: {.cell-output .cell-output-stdout} <code>[1] 3 4 5</code> ::: :::</p>
 <ul>
 <li>Can you guess what <code>data[-1:5]</code> returns? I can’t either, so don’t ever try it. If you must know, it’s actually an error.</li>
@@ -2423,7 +2431,7 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 <li>Code like <code>subset(data, exampleCol &gt; x)</code> will misbehave if <code>x</code> is a column in <code>data</code> but you intended it to come from the calling environment.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb429"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb429-1"><a href="#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb432"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb432-1"><a href="#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone Solar.R Wind Temp Month Day
 1    41     190  7.4   67     5   1
@@ -2433,7 +2441,7 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 5    NA      NA 14.3   56     5   5
 6    28      NA 14.9   66     5   6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb431"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb431-1"><a href="#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">subset</span>(airquality, Wind <span class="sc">*</span> <span class="dv">5</span> <span class="sc">&gt;</span> Temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb434"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb434-1"><a href="#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">subset</span>(airquality, Wind <span class="sc">*</span> <span class="dv">5</span> <span class="sc">&gt;</span> Temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Ozone Solar.R Wind Temp Month Day
 5     NA      NA 14.3   56     5   5
@@ -2443,8 +2451,8 @@ Mazda RX4 Wag 21 6 160 110 3.9 2.875 17.02 0 1 4 4</code></pre>
 15    18      65 13.2   58     5  15
 18     6      78 18.4   57     5  18</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb433"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb433-1"><a href="#cb433-1" aria-hidden="true" tabindex="-1"></a>Temp <span class="ot">&lt;-</span> <span class="dv">90000000</span></span>
-<span id="cb433-2"><a href="#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">subset</span>(airquality, Wind <span class="sc">*</span> <span class="dv">5</span> <span class="sc">&gt;</span> Temp))<span class="co">#Identical to the previous call.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb436"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb436-1"><a href="#cb436-1" aria-hidden="true" tabindex="-1"></a>Temp <span class="ot">&lt;-</span> <span class="dv">90000000</span></span>
+<span id="cb436-2"><a href="#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">subset</span>(airquality, Wind <span class="sc">*</span> <span class="dv">5</span> <span class="sc">&gt;</span> Temp))<span class="co">#Identical to the previous call.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Ozone Solar.R Wind Temp Month Day
 5     NA      NA 14.3   56     5   5
@@ -2486,26 +2494,26 @@ I think that this is the case that <code>with()</code>’s documentation is tryi
 </ul></li>
 <li><p>Once you’re aware of it, the previous issue starts coming up in weird places. This suggests that R’s missing something in its error checks. Take a look:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb435"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb435-1"><a href="#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="fl">4.8</span>) <span class="co">#Not an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb438"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb438-1"><a href="#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_len</span>(<span class="fl">4.8</span>) <span class="co">#Not an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb437"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb437-1"><a href="#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fl">4.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb440"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb440-1"><a href="#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fl">4.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb439"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb439-1"><a href="#cb439-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb439-2"><a href="#cb439-2" aria-hidden="true" tabindex="-1"></a>a[<span class="fl">4.8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb442"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb442-1"><a href="#cb442-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb442-2"><a href="#cb442-2" aria-hidden="true" tabindex="-1"></a>a[<span class="fl">4.8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb441"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb441-1"><a href="#cb441-1" aria-hidden="true" tabindex="-1"></a>a[<span class="sc">-</span><span class="fl">4.8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb444"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb444-1"><a href="#cb444-1" aria-hidden="true" tabindex="-1"></a>a[<span class="sc">-</span><span class="fl">4.8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  3  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb443"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb443-1"><a href="#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">4.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb446"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb446-1"><a href="#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">4.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 1 4 3</code></pre>
+<pre><code>[1] 1 3 2 4</code></pre>
 </div>
 </div>
 <p>The pattern is that <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing-by-vectors">R silently truncates the numeric index of choice towards 0</a>.</p></li>
@@ -2520,9 +2528,9 @@ I think that this is the case that <code>with()</code>’s documentation is tryi
 <li><p>The two language problem: Sooner or later, you’ll run in to a memory issue, go to Stack Overflow, and be told that the solution is to use a package that lets R talk to C++. Julia claims to have solved this. I don’t know if I believe it.</p></li>
 <li><p>The index in a <code>for</code> loop uses the same environment as its caller, so loops like <code>for(i in 1:10)</code> will overwrite any variable called <code>i</code> in the parent environment and set it to <code>10</code> when the loop finishes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb445"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb445-1"><a href="#cb445-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb445-2"><a href="#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){}</span>
-<span id="cb445-3"><a href="#cb445-3" aria-hidden="true" tabindex="-1"></a>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb448"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb448-1"><a href="#cb448-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb448-2"><a href="#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){}</span>
+<span id="cb448-3"><a href="#cb448-3" aria-hidden="true" tabindex="-1"></a>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
