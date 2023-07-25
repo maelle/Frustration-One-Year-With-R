@@ -1847,7 +1847,7 @@ object length</code></pre>
 <pre><code>function (n, expr, simplify = "array") 
 sapply(integer(n), eval.parent(substitute(function(...) expr)), 
     simplify = simplify)
-&lt;bytecode: 0x56243757c2d8&gt;
+&lt;bytecode: 0x5556cb1fa060&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div></li>
@@ -1863,7 +1863,7 @@ sapply(integer(n), eval.parent(substitute(function(...) expr)),
         X &lt;- as.list(X)
     .Internal(lapply(X, FUN))
 }
-&lt;bytecode: 0x562433cc5b80&gt;
+&lt;bytecode: 0x5556c7960b80&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div></li>
@@ -2505,7 +2505,7 @@ I think that this is the case that <code>with()</code>’s documentation is tryi
 </div>
 <div class="sourceCode cell-code" id="cb443"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb443-1"><a href="#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fl">4.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 4 2 3</code></pre>
+<pre><code>[1] 2 1 4 3</code></pre>
 </div>
 </div>
 <p>The pattern is that <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Indexing-by-vectors">R silently truncates the numeric index of choice towards 0</a>.</p></li>
